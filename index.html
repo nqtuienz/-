@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>emnhoanh 💗</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ffd6e7, #fff5f8);
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.card {
+    width: 90%;
+    max-width: 600px;
+    padding: 40px 25px;
+    background: rgba(255,255,255,0.85);
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+    animation: appear 0.8s ease;
+}
+
+h1 {
+    color: #ff4f91;
+    font-size: 38px;
+}
+
+h2 {
+    color: #555;
+}
+
+p {
+    color: #555;
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+button {
+    border: none;
+    background: #ff5c93;
+    color: white;
+    padding: 14px 28px;
+    border-radius: 30px;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+.hidden {
+    display: none;
+}
+
+.heart {
+    position: fixed;
+    bottom: -20px;
+    animation: fly 5s linear forwards;
+    pointer-events: none;
+}
+
+@keyframes fly {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-110vh);
+        opacity: 0;
+    }
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <div id="chapter1">
+        <h1>emnhoanh 💗</h1>
+
+        <h2>Chapter 1 — Lần đầu gặp nhau</h2>
+
+        <p>
+            Có những người xuất hiện trong cuộc sống
+            một cách rất bình thường...
+            nhưng chẳng hiểu từ lúc nào lại trở nên đặc biệt.
+        </p>
+
+        <button onclick="next(1)">
+            Tiếp tục 💕
+        </button>
+    </div>
+
+
+    <div id="chapter2" class="hidden">
+        <h1>Chapter 2 🌷</h1>
+
+        <p>
+            Rồi chúng ta bắt đầu nói chuyện,
+            kể cho nhau nghe đủ thứ chuyện trên đời.
+            Có những chuyện chẳng quan trọng gì,
+            nhưng lúc ấy lại thấy vui.
+        </p>
+
+        <button onclick="next(2)">
+            Tiếp tục 💗
+        </button>
+    </div>
+
+
+    <div id="chapter3" class="hidden">
+        <h1>Chapter 3 🫶</h1>
+
+        <p>
+            Có lúc vui, có lúc buồn,
+            có lúc chẳng biết phải nói gì.
+            Nhưng những khoảnh khắc ấy
+            vẫn trở thành một phần rất đáng nhớ.
+        </p>
+
+        <button onclick="next(3)">
+            Tiếp tục 💕
+        </button>
+    </div>
+
+
+    <div id="chapter4" class="hidden">
+        <h1>Chapter 4 💌</h1>
+
+        <p>
+            Thật ra em cũng chẳng biết phải viết
+            câu chuyện này như thế nào cho hay...
+            nên thôi nói đơn giản vậy.
+        </p>
+
+        <p>
+            <b>Em nhớ anh.</b> 💗
+        </p>
+
+        <button onclick="next(4)">
+            Còn nữa... 🌸
+        </button>
+    </div>
+
+
+    <div id="chapter5" class="hidden">
+        <h1>♡ THE END ♡</h1>
+
+        <p>
+            Cảm ơn anh vì đã xuất hiện
+            trong câu chuyện của em.
+        </p>
+
+        <p>
+            Mong rằng khi nhìn thấy trang này,
+            anh sẽ mỉm cười một chút. 🌷
+        </p>
+
+        <h2>emnhoanh 💗</h2>
+    </div>
+
+</div>
+
+
+<script>
+
+function next(number) {
+
+    document.getElementById("chapter" + number)
+        .classList.add("hidden");
+
+    document.getElementById("chapter" + (number + 1))
+        .classList.remove("hidden");
+
+    createHearts();
+}
+
+
+function createHearts() {
+
+    for(let i = 0; i < 8; i++) {
+
+        let heart = document.createElement("div");
+
+        heart.className = "heart";
+        heart.innerHTML = "💗";
+
+        heart.style.left =
+            Math.random() * 100 + "vw";
+
+        heart.style.fontSize =
+            (15 + Math.random() * 25) + "px";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 5000);
+    }
+}
+
+</script>
+
+</body>
+</html>
