@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -7,211 +8,672 @@
 <title>emnhoanh 💗</title>
 
 <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap');
+
 * {
     box-sizing: border-box;
 }
 
-body {
+html, body {
     margin: 0;
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    overflow-x: hidden;
+    font-family: "Be Vietnam Pro", sans-serif;
+    background: #fff0f5;
+    color: #49333d;
+}
+
+/* =========================
+   NỀN
+========================= */
+
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: -5;
+    background:
+        radial-gradient(circle at 15% 20%, #ffd6e7 0 8%, transparent 25%),
+        radial-gradient(circle at 85% 70%, #ffe2ed 0 10%, transparent 28%),
+        linear-gradient(135deg, #fff7fa, #ffeef5);
+}
+
+.glow {
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: .45;
+    z-index: -4;
+}
+
+.glow.one {
+    background: #ff9fc4;
+    top: -100px;
+    left: -80px;
+}
+
+.glow.two {
+    background: #ffd36e;
+    bottom: -120px;
+    right: -100px;
+}
+
+/* =========================
+   TRANG
+========================= */
+
+.page {
     min-height: 100vh;
-    background: linear-gradient(135deg, #ffd6e7, #fff5f8);
-    font-family: Arial, sans-serif;
+    padding: 35px 18px;
     display: flex;
-    justify-content: center;
     align-items: center;
-    overflow: hidden;
+    justify-content: center;
 }
 
-.card {
-    width: 90%;
-    max-width: 600px;
-    padding: 40px 25px;
-    background: rgba(255,255,255,0.85);
-    border-radius: 30px;
+.story {
+    width: 100%;
+    max-width: 760px;
     text-align: center;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.12);
-    animation: appear 0.8s ease;
 }
 
-h1 {
-    color: #ff4f91;
-    font-size: 38px;
-}
+/* =========================
+   CHAPTER
+========================= */
 
-h2 {
-    color: #555;
-}
-
-p {
-    color: #555;
-    font-size: 18px;
-    line-height: 1.8;
-}
-
-button {
-    border: none;
-    background: #ff5c93;
-    color: white;
-    padding: 14px 28px;
-    border-radius: 30px;
-    font-size: 17px;
-    cursor: pointer;
-}
-
-button:hover {
-    transform: scale(1.05);
-}
-
-.hidden {
+.chapter {
     display: none;
 }
 
-.heart {
-    position: fixed;
-    bottom: -20px;
-    animation: fly 5s linear forwards;
-    pointer-events: none;
+.chapter.active {
+    display: block;
+    animation: pageIn .8s ease;
 }
 
-@keyframes fly {
-    0% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-
-    100% {
-        transform: translateY(-110vh);
-        opacity: 0;
-    }
-}
-
-@keyframes appear {
+@keyframes pageIn {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(35px) scale(.97);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
     }
 }
+
+.chapter-number {
+    font-size: 13px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #c17a96;
+    margin-bottom: 12px;
+}
+
+.title {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(30px, 7vw, 52px);
+    line-height: 1.15;
+    color: #8d3f60;
+    margin: 0 0 22px;
+}
+
+/* =========================
+   KHUNG ẢNH
+========================= */
+
+.photo-wrap {
+    position: relative;
+    width: min(100%, 560px);
+    margin: 0 auto 30px;
+    padding: 12px;
+    background: rgba(255,255,255,.72);
+    border: 1px solid rgba(255,255,255,.9);
+    border-radius: 28px;
+    box-shadow:
+        0 25px 70px rgba(133, 67, 91, .18),
+        0 5px 15px rgba(133, 67, 91, .08);
+    transform: rotate(-1deg);
+}
+
+.photo-wrap::before {
+    content: "♡";
+    position: absolute;
+    top: -25px;
+    right: 25px;
+    font-size: 42px;
+    color: #ed7da4;
+    transform: rotate(12deg);
+    z-index: 2;
+}
+
+.photo-wrap::after {
+    content: "";
+    position: absolute;
+    width: 80px;
+    height: 25px;
+    background: rgba(255, 220, 231, .75);
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-3deg);
+    border-radius: 4px;
+}
+
+.memory-photo {
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+    display: block;
+    border-radius: 20px;
+    background: #f7dce7;
+}
+
+/* =========================
+   CHÚ THÍCH ẢNH
+========================= */
+
+.caption {
+    margin: -10px auto 25px;
+    color: #9d7182;
+    font-size: 14px;
+    font-style: italic;
+}
+
+/* =========================
+   NỘI DUNG
+========================= */
+
+.text {
+    width: min(100%, 620px);
+    margin: 0 auto;
+    font-size: 17px;
+    line-height: 1.9;
+    color: #624955;
+}
+
+.highlight {
+    color: #d45682;
+    font-weight: 700;
+}
+
+/* =========================
+   NÚT
+========================= */
+
+.next-button {
+    margin-top: 30px;
+    padding: 15px 30px;
+    border: 0;
+    border-radius: 999px;
+
+    background: linear-gradient(135deg, #ed6f9c, #d95182);
+    color: white;
+
+    font-size: 16px;
+    font-family: inherit;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 25px rgba(217, 81, 130, .25);
+
+    transition: .25s ease;
+}
+
+.next-button:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow:
+        0 15px 30px rgba(217, 81, 130, .32);
+}
+
+.next-button:active {
+    transform: scale(.97);
+}
+
+/* =========================
+   TIM BAY
+========================= */
+
+.heart {
+    position: fixed;
+    bottom: -40px;
+    pointer-events: none;
+    z-index: 20;
+    animation: heartFly linear forwards;
+}
+
+@keyframes heartFly {
+
+    0% {
+        transform: translateY(0) rotate(0deg) scale(.8);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translateY(-115vh)
+            translateX(var(--move))
+            rotate(360deg)
+            scale(1.3);
+        opacity: 0;
+    }
+}
+
+/* =========================
+   HẠT LẤP LÁNH
+========================= */
+
+.sparkle {
+    position: fixed;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 0 10px white;
+    opacity: .8;
+    animation: sparkle 3s infinite ease-in-out;
+    z-index: -1;
+}
+
+@keyframes sparkle {
+    0%, 100% {
+        transform: scale(.5);
+        opacity: .2;
+    }
+
+    50% {
+        transform: scale(1.5);
+        opacity: 1;
+    }
+}
+
+/* =========================
+   TRANG CUỐI
+========================= */
+
+.final-heart {
+    font-size: 70px;
+    animation: heartbeat 1.3s infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+.signature {
+    margin-top: 25px;
+    color: #c35d82;
+    font-family: "Playfair Display", serif;
+    font-size: 27px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .page {
+        padding: 25px 14px;
+    }
+
+    .photo-wrap {
+        padding: 8px;
+        border-radius: 22px;
+    }
+
+    .memory-photo {
+        height: 290px;
+        border-radius: 16px;
+    }
+
+    .text {
+        font-size: 15.5px;
+    }
+
+    .title {
+        font-size: 34px;
+    }
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="card">
+<div class="background"></div>
+<div class="glow one"></div>
+<div class="glow two"></div>
 
-    <div id="chapter1">
-        <h1>emnhoanh 💗</h1>
+<!-- =========================
+     STORY
+========================= -->
 
-        <h2>Chapter 1 — Lần đầu gặp nhau</h2>
+<main class="page">
 
-        <p>
-            Có những người xuất hiện trong cuộc sống
-            một cách rất bình thường...
-            nhưng chẳng hiểu từ lúc nào lại trở nên đặc biệt.
-        </p>
+<div class="story">
 
-        <button onclick="next(1)">
-            Tiếp tục 💕
-        </button>
+<!-- =========================
+     PHẦN 1
+========================= -->
+
+<section class="chapter active" id="chapter1">
+
+    <div class="chapter-number">
+        Kỷ niệm 01
     </div>
 
+    <h1 class="title">
+        Kỉ niệm
+    </h1>
 
-    <div id="chapter2" class="hidden">
-        <h1>Chapter 2 🌷</h1>
+    <!-- DÁN LINK ẢNH PHẦN 1 Ở ĐÂY -->
+    <div class="photo-wrap">
 
-        <p>
-            Rồi chúng ta bắt đầu nói chuyện,
-            kể cho nhau nghe đủ thứ chuyện trên đời.
-            Có những chuyện chẳng quan trọng gì,
-            nhưng lúc ấy lại thấy vui.
-        </p>
+        <img
+            class="memory-photo"
+            src="blob:https://www.facebook.com/d2e6d1df-96f1-4564-8584-d131ccf3e9b1"
+            alt="Kỉ niệm lần đầu gặp"
+        >
 
-        <button onclick="next(2)">
-            Tiếp tục 💗
-        </button>
     </div>
 
-
-    <div id="chapter3" class="hidden">
-        <h1>Chapter 3 🫶</h1>
-
-        <p>
-            Có lúc vui, có lúc buồn,
-            có lúc chẳng biết phải nói gì.
-            Nhưng những khoảnh khắc ấy
-            vẫn trở thành một phần rất đáng nhớ.
-        </p>
-
-        <button onclick="next(3)">
-            Tiếp tục 💕
-        </button>
+    <div class="caption">
+       Đây là ván game đầu tiên mà em với anh chơi chung với nhau sau khi gặp trong Dicord 🌷
     </div>
 
+    <p class="text">
+        Lúc đầu em nghĩ rằng server đó cũng chỉ như bao server khác
+        nhưng không
+        server này đặc biệt hơn vì có anh
+        và anh đã trở thành một kỉ niệm vào mùa hè năm 2026 của em.
+    </p>
 
-    <div id="chapter4" class="hidden">
-        <h1>Chapter 4 💌</h1>
+    <button class="next-button" onclick="nextChapter()">
+        Tiếp tục 💖
+    </button>
 
-        <p>
-            Thật ra em cũng chẳng biết phải viết
-            câu chuyện này như thế nào cho hay...
-            nên thôi nói đơn giản vậy.
-        </p>
+</section>
 
-        <p>
-            <b>Em nhớ anh.</b> 💗
-        </p>
 
-        <button onclick="next(4)">
-            Còn nữa... 🌸
-        </button>
+<!-- =========================
+     PHẦN 2
+========================= -->
+
+<section class="chapter" id="chapter2">
+
+    <div class="chapter-number">
+        Kỷ niệm 02
     </div>
 
+    <h1 class="title">
+        Sau đó em có cảm tình
+    </h1>
 
-    <div id="chapter5" class="hidden">
-        <h1>♡ THE END ♡</h1>
+    <!-- DÁN LINK ẢNH PHẦN 2 Ở ĐÂY -->
+    <div class="photo-wrap">
 
-        <p>
-            Cảm ơn anh vì đã xuất hiện
-            trong câu chuyện của em.
-        </p>
+        <img
+            class="memory-photo"
+            src="blob:https://www.facebook.com/6710143f-1f96-4fd8-872f-23de95b173f2"
+            alt="Kỉ niệm"
+        >
 
-        <p>
-            Mong rằng khi nhìn thấy trang này,
-            anh sẽ mỉm cười một chút. 🌷
-        </p>
-
-        <h2>emnhoanh 💗</h2>
     </div>
+
+    <div class="caption">
+        Chẳng biết từ lúc nào nữa... 💭
+    </div>
+
+    <p class="text">
+        Rồi chẳng biết từ lúc nào,
+        em bắt đầu để ý đến anh nhiều hơn một chút.
+        Những điều rất nhỏ về anh cũng khiến em nhớ.
+        và cả lúc anh và em cùng nhau xem phim.
+    </p>
+
+    <button class="next-button" onclick="nextChapter()">
+        Tiếp tục 💕
+    </button>
+
+</section>
+
+
+<!-- =========================
+     PHẦN 3
+========================= -->
+
+<section class="chapter" id="chapter3">
+
+    <div class="chapter-number">
+        Kỷ niệm 03
+    </div>
+
+    <h1 class="title">
+        Rồi chúng ta nói chuyện nhiều hơn
+    </h1>
+
+    <!-- DÁN LINK ẢNH PHẦN 3 Ở ĐÂY -->
+    <div class="photo-wrap">
+
+        <img
+            class="memory-photo"
+            src="blob:https://www.facebook.com/237aa910-6748-4a1e-bc0a-dc000a993fe6"
+            alt="Những cuộc trò chuyện"
+        >
+
+    </div>
+
+    <div class="caption">
+        Những chuyện chẳng đâu vào đâu nhưng vẫn vui. 🫶
+    </div>
+
+    <p class="text">
+        Từ những câu chuyện linh tinh,
+        những lần trêu nhau,
+        đến những lúc chẳng có chuyện gì
+        nhưng vẫn muốn nói chuyện với nhau.
+    </p>
+
+    <button class="next-button" onclick="nextChapter()">
+        Tiếp tục 💗
+    </button>
+
+</section>
+
+
+<!-- =========================
+     PHẦN 4
+========================= -->
+
+<section class="chapter" id="chapter4">
+
+    <div class="chapter-number">
+        Kỷ niệm 04
+    </div>
+
+    <h1 class="title">
+        Càng ngày em càng nhớ anh
+    </h1>
+
+    <!-- DÁN LINK ẢNH PHẦN 4 Ở ĐÂY -->
+    <div class="photo-wrap">
+
+        <img
+            class="memory-photo"
+            src="blob:https://www.facebook.com/6224fd0e-900c-4475-aeb2-59cf9d89a2ed"
+            alt="Kỉ niệm"
+        >
+
+    </div>
+
+    <div class="caption">
+        Có những điều chỉ khi nhớ mới nhận ra. 💭
+    </div>
+
+    <p class="text">
+        Có những ngày chẳng có chuyện gì đặc biệt,
+        nhưng em vẫn vô thức nghĩ đến anh.
+        Có lẽ lúc ấy em đã nhận ra
+        <span class="highlight">
+            anh thật sự trở nên quan trọng với em.
+        </span>
+    </p>
+
+    <button class="next-button" onclick="nextChapter()">
+        Tiếp tục 💌
+    </button>
+
+</section>
+
+
+<!-- =========================
+     PHẦN 5
+========================= -->
+
+<section class="chapter" id="chapter5">
+
+    <div class="chapter-number">
+        Điều em muốn nói
+    </div>
+
+    <h1 class="title">
+        Có một điều...
+    </h1>
+
+    <!-- DÁN LINK ẢNH PHẦN 5 Ở ĐÂY -->
+    <div class="photo-wrap">
+
+        <img
+            class="memory-photo"
+            src="blob:https://www.facebook.com/b66575ba-c07d-406a-8bf0-8944b913d5e0"
+            alt="Điều muốn nói"
+   >
+    </div>
+
+  <div class="caption">
+         Đến đây thì em không biết phải nói sao nữa... 💌
+    </div>
+  
+    <p class="text">
+        Em không biết phải kể câu chuyện này
+        như thế nào cho thật hay.
+        Nhưng có một điều em muốn anh biết...
+    </p>
+
+    <h2 class="signature">
+        Em nhớ anh. 💗
+    </h2>
+
+    <button class="next-button" onclick="nextChapter()">
+        Đọc tiếp 🌸
+    </button>
+
+</section>
+
+
+<!-- =========================
+     PHẦN CUỐI
+========================= -->
+
+<section class="chapter" id="chapter6">
+
+    <div class="final-heart">
+        💗
+    </div>
+
+    <h1 class="title">
+        Cảm ơn anh
+    </h1>
+
+    <p class="text">
+        Cảm ơn anh vì đã xuất hiện
+        và trở thành một phần trong những
+        kỉ niệm đáng nhớ nhất vào mùa hè 2026 của em
+        <br><br>
+        Mong rằng khi đọc đến đây,
+        anh sẽ quên em đi=)) coi như chưa từng gặp em. 🌷
+        Forget Me Now..
+    </p>
+
+    <div class="signature">
+        Nhưng dù vậy em vẫn nhoanh 💗
+    </div>
+
+</section>
 
 </div>
+
+</main>
 
 
 <script>
 
-function next(number) {
+/* =========================
+   CHUYỂN PHẦN
+========================= */
 
-    document.getElementById("chapter" + number)
-        .classList.add("hidden");
+let currentChapter = 1;
 
-    document.getElementById("chapter" + (number + 1))
-        .classList.remove("hidden");
+function nextChapter() {
 
-    createHearts();
+    const current =
+        document.getElementById("chapter" + currentChapter);
+
+    current.classList.remove("active");
+
+    currentChapter++;
+
+    const next =
+        document.getElementById("chapter" + currentChapter);
+
+    if (next) {
+
+        next.classList.add("active");
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+        createHearts();
+    }
 }
 
 
+/* =========================
+   TIM BAY
+========================= */
+
 function createHearts() {
 
-    for(let i = 0; i < 8; i++) {
+    const hearts = ["💗", "💕", "💖", "💘", "🌸", "♡"];
 
-        let heart = document.createElement("div");
+    for (let i = 0; i < 14; i++) {
+
+        const heart =
+            document.createElement("div");
 
         heart.className = "heart";
-        heart.innerHTML = "💗";
+
+        heart.innerHTML =
+            hearts[Math.floor(Math.random() * hearts.length)];
 
         heart.style.left =
             Math.random() * 100 + "vw";
@@ -219,15 +681,57 @@ function createHearts() {
         heart.style.fontSize =
             (15 + Math.random() * 25) + "px";
 
+        heart.style.animationDuration =
+            (3 + Math.random() * 3) + "s";
+
+        heart.style.setProperty(
+            "--move",
+            (Math.random() * 180 - 90) + "px"
+        );
+
         document.body.appendChild(heart);
 
         setTimeout(() => {
             heart.remove();
-        }, 5000);
+        }, 6500);
     }
 }
+
+
+/* =========================
+   LẤP LÁNH
+========================= */
+
+for (let i = 0; i < 25; i++) {
+
+    const sparkle =
+        document.createElement("div");
+
+    sparkle.className = "sparkle";
+
+    sparkle.style.left =
+        Math.random() * 100 + "vw";
+
+    sparkle.style.top =
+        Math.random() * 100 + "vh";
+
+    sparkle.style.animationDelay =
+        Math.random() * 3 + "s";
+
+    document.body.appendChild(sparkle);
+}
+
+
+/* =========================
+   TIM NHẸ KHI MỞ TRANG
+========================= */
+
+setTimeout(() => {
+    createHearts();
+}, 700);
 
 </script>
 
 </body>
 </html>
+```
